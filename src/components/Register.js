@@ -34,7 +34,7 @@ const Register = () => {
         {state.errMsg}
       </p>
       <h1>Sign Up</h1>
-      <Form refOne={userRef} validName={state.validName} />
+      <Form refOne={userRef} />
     </section>
   );
 };

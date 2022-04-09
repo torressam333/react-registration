@@ -9,7 +9,7 @@
 import { useState, useEffect } from "react";
 import { authRegex } from "../util/authRegex";
 
-const Form = ({ refOne, validName }) => {
+const Form = ({ refOne }) => {
   const [state, setState] = useState({
     user: "",
     validName: false,
@@ -40,22 +40,43 @@ const Form = ({ refOne, validName }) => {
     setState("");
   }, [state.user, state.pwd, state.matchPwd]);
 
-  const handleInput = (e) => {};
-  const handleFocus = (e) => {};
-  const handleBlur = (e) => {};
+  const handleInput = (evt) => {
+    //Apt to handling events from multiple inputs generically
+    const value = evt.target.value;
+    setState({
+      ...state,
+      [evt.target.name]: value
+    });
+  };
+
+  const handleFocus = (evt) => {
+    setState({
+      ...state,
+      userFocus: true
+    });
+  };
+
+  const handleBlur = (evt) => {
+    setState({
+      ...state,
+      userFocus: false
+    });
+  };
 
   return (
     <form>
       <InputWithLabel
         id="username"
         userRef={refOne}
+        value={state.user}
         autoComplete="off"
         onInputChange={handleInput}
         onFocusChange={handleFocus}
         onBlurChange={handleBlur}
         required
-        ariaInvalid={validName ? "false" : "true"}
+        ariaInvalid={state.validName ? "false" : "true"}
         ariaDescribedby="uidnote"
+        name="user"
       >
         Username:
       </InputWithLabel>
@@ -66,6 +87,7 @@ const Form = ({ refOne, validName }) => {
 //Helper composable components
 const InputWithLabel = ({
   id,
+  name,
   value,
   type = "text",
   onInputChange,
@@ -82,6 +104,7 @@ const InputWithLabel = ({
       &nbsp;
       <input
         id={id}
+        name={name}
         type={type}
         value={value}
         onChange={onInputChange}
