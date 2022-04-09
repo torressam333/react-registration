@@ -1,0 +1,12 @@
+.errmsg {
+  background-color: rgb(201, 60, 81);
+  color: rgb(170, 0, 0);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
