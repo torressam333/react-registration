@@ -6,7 +6,7 @@
  * Props coming into the form will come from implementation
  * i.e. The Register.js component
  */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { authRegex } from "../util/authRegex";
 
 const Form = ({ refOne }) => {
@@ -77,6 +77,7 @@ const Form = ({ refOne }) => {
         ariaInvalid={state.validName ? "false" : "true"}
         ariaDescribedby="uidnote"
         name="user"
+        isFocused
       >
         Username:
       </InputWithLabel>
@@ -96,8 +97,17 @@ const InputWithLabel = ({
   children,
   autoComplete,
   ariaInvalid,
-  ariaDescribedby
+  ariaDescribedby,
+  isFocused
 }) => {
+  const inputRef = useRef();
+
+  useEffect(() => {
+    if (isFocused && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isFocused]);
+
   return (
     <>
       <label htmlFor={id}>{children}</label>
@@ -113,6 +123,8 @@ const InputWithLabel = ({
         autoComplete={autoComplete}
         aria-invalid={ariaInvalid}
         aria-describedby={ariaDescribedby}
+        autoFocus={isFocused}
+        ref={inputRef}
       />
     </>
   );
