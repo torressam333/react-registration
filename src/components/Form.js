@@ -102,8 +102,12 @@ const InputWithLabel = ({
 }) => {
   const inputRef = useRef();
 
+  /**
+   * Perform the focus on the input field when the component renders (or its dependencies change).
+   */
   useEffect(() => {
     if (isFocused && inputRef.current) {
+      //Current is the actual jsx element
       inputRef.current.focus();
     }
   }, [isFocused]);
