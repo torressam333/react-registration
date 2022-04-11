@@ -6,8 +6,11 @@
  * Props coming into the form will come from implementation
  * i.e. The Register.js component
  */
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useRef } from "react";
 import { authRegex } from "../util/authRegex";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../assets/form.css";
 
 const Form = ({ refOne }) => {
   const [state, setState] = useState({
@@ -74,13 +77,28 @@ const Form = ({ refOne }) => {
         onFocusChange={handleFocus}
         onBlurChange={handleBlur}
         required
-        ariaInvalid={state.validName ? "false" : "true"}
-        ariaDescribedby="uidnote"
+        aria-invalid={state.validName ? "false" : "true"}
+        aria-describedby="uidnote"
         name="user"
         isFocused
       >
         Username:
       </InputWithLabel>
+      <p
+        id="uidnote"
+        className={
+          state.userFocus && state.user && !state.validName
+            ? "intructions"
+            : "offscreen"
+        }
+      >
+        <FontAwesomeIcon icon={faInfoCircle} />
+        4-24 characters.
+        <br />
+        Must begin with a letter.
+        <br />
+        Letters, numbers, underscores, and hypens allowed.
+      </p>
     </form>
   );
 };
