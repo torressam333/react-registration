@@ -1,4 +1,3 @@
-import Form from "./Form";
 import { useEffect, useRef, useState } from "react";
 import {
   faCheck,
@@ -34,7 +33,6 @@ const Register = () => {
         {state.errMsg}
       </p>
       <h1>Sign Up</h1>
-      <Form refOne={userRef} />
     </section>
   );
 };
