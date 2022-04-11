@@ -42,6 +42,19 @@ const Register = () => {
     setValidName(authRegex.userRegex.test(user));
   }, [user]);
 
+  useEffect(() => {
+    setValidPwd(authRegex.pwRegex.test(pwd));
+
+    //Ensure fields match
+    const match = pwd === matchPwd;
+    setValidMatch(match);
+  }, [pwd, matchPwd]);
+
+  //If state of any 3 items in dep array changes, clear error
+  useEffect(() => {
+    setErrMsg("");
+  }, [user, pwd, matchPwd]);
+
   return (
     <section>
       <p
