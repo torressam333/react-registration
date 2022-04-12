@@ -77,6 +77,8 @@ const Register = () => {
           userRef={userRef}
           fieldEntity={user}
           focusedField={userFocus}
+          inputType="text"
+          autoComp="on"
         >
           Username:
         </InputWithLabel>
@@ -98,9 +100,10 @@ const Register = () => {
           validProperty={validPwd}
           setFocus={setPwdFocus}
           setField={setPwd}
-          userRef={userRef}
           fieldEntity={pwd}
           focusedField={pwdFocus}
+          inputType="password"
+          autoComp="new-password"
         >
           Password:
         </InputWithLabel>

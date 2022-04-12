@@ -1,9 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const InputWithLabel = ({
   validProperty,
@@ -13,7 +10,8 @@ const InputWithLabel = ({
   fieldEntity,
   children,
   htmlFor,
-  focusedField
+  inputType,
+  autoComp
 }) => {
   return (
     <>
@@ -29,14 +27,14 @@ const InputWithLabel = ({
       <input
         aria-describedby="uidnote"
         aria-invalid={validProperty ? "false" : "true"}
-        autoComplete="off"
+        autoComplete={autoComp}
         id="username"
         onBlur={() => setFocus(false)}
         onChange={(e) => setField(e.target.value)}
         onFocus={() => setFocus(true)}
         ref={userRef}
         required
-        type="text"
+        type={inputType}
       />
     </>
   );
