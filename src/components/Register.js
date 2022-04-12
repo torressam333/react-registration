@@ -7,6 +7,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../assets/register.css";
 import { authRegex } from "../util/authRegex";
+import InputWithLabel from "./InputWithLabel";
+import ParagraphHelp from "./ParagraphHelp";
 
 const Register = () => {
   //Set focus on user input when comp loads
@@ -67,32 +69,21 @@ const Register = () => {
       </p>
       <h1>Sign Up</h1>
       <form>
-        <label htmlFor="username">
+        <InputWithLabel
+          htmlFor="username"
+          validProperty={validName}
+          setFocus={setUserFocus}
+          setField={setUser}
+          userRef={userRef}
+          fieldEntity={user}
+          focusedField={userFocus}
+        >
           Username:
-          <span className={validName ? "valid" : "hide"}>
-            <FontAwesomeIcon icon={faCheck} />
-          </span>
-          <span className={validName || !user ? "hide" : "invalid"}>
-            <FontAwesomeIcon icon={faTimes} />
-          </span>
-        </label>
-        <input
-          aria-describedby="uidnote"
-          aria-invalid={validName ? "false" : "true"}
-          autoComplete="off"
-          id="username"
-          onBlur={() => setUserFocus(false)}
-          onChange={(e) => setUser(e.target.value)}
-          onFocus={() => setUserFocus(true)}
-          ref={userRef}
-          required
-          type="text"
-        />
-        <p
-          id="uidnote"
-          className={
-            userFocus && user && !validName ? "instructions" : "offscreen"
-          }
+        </InputWithLabel>
+        <ParagraphHelp
+          validProperty={validName}
+          fieldEntity={user}
+          focusedField={userFocus}
         >
           <FontAwesomeIcon icon={faInfoCircle} />
           4 to 24 characters.
@@ -100,7 +91,31 @@ const Register = () => {
           Must begin with a letter.
           <br />
           Letters, numbers, underscores, and hyphens allowed.
-        </p>
+        </ParagraphHelp>
+
+        <InputWithLabel
+          htmlFor="password"
+          validProperty={validPwd}
+          setFocus={setPwdFocus}
+          setField={setPwd}
+          userRef={userRef}
+          fieldEntity={pwd}
+          focusedField={pwdFocus}
+        >
+          Password:
+        </InputWithLabel>
+        <ParagraphHelp
+          validProperty={validPwd}
+          fieldEntity={pwd}
+          focusedField={pwdFocus}
+        >
+          <FontAwesomeIcon icon={faInfoCircle} />
+          1d to 24 characters.
+          <br />
+          Must begin with a letter.
+          <br />
+          Letters, numbers, underscores, and hyphens allowed.
+        </ParagraphHelp>
       </form>
     </section>
   );
