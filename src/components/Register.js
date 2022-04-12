@@ -129,6 +129,29 @@ const Register = () => {
           <span aria-label="dollar sign">$</span>
           <span aria-label="percent">%</span>
         </ParagraphHelp>
+
+        <InputWithLabel
+          htmlFor="confirm_pwd"
+          validProperty={validMatch}
+          setFocus={setMatchFocus}
+          setField={setMatchPwd}
+          fieldEntity={matchPwd}
+          focusedField={matchFocus}
+          inputType="password"
+          autoComp="new-password"
+          inputID="confirm_pwd"
+        >
+          Confirm Password:
+        </InputWithLabel>
+        <ParagraphHelp
+          validProperty={validMatch}
+          fieldEntity={matchPwd}
+          focusedField={matchFocus}
+          fieldID="confirmnote"
+        >
+          <FontAwesomeIcon icon={faInfoCircle} />
+          Both password fields must match.
+        </ParagraphHelp>
       </form>
     </section>
   );

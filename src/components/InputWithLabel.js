@@ -18,9 +18,15 @@ const InputWithLabel = ({
     <>
       <label htmlFor={htmlFor}>
         {children}
-        <span className={validProperty ? "valid" : "hide"}>
-          <FontAwesomeIcon icon={faCheck} />
-        </span>
+        {inputID === "confirm_pwd" ? (
+          <span className={validProperty && fieldEntity ? "valid" : "hide"}>
+            <FontAwesomeIcon icon={faCheck} />
+          </span>
+        ) : (
+          <span className={validProperty ? "valid" : "hide"}>
+            <FontAwesomeIcon icon={faCheck} />
+          </span>
+        )}
         <span className={validProperty || !fieldEntity ? "hide" : "invalid"}>
           <FontAwesomeIcon icon={faTimes} />
         </span>
