@@ -4,6 +4,7 @@ import {
   faTimes,
   faInfoCircle
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../assets/register.css";
 import { authRegex } from "../util/authRegex";
 
@@ -66,7 +67,40 @@ const Register = () => {
       </p>
       <h1>Sign Up</h1>
       <form>
-        <input />
+        <label htmlFor="username">
+          Username:
+          <span className={validName ? "valid" : "hide"}>
+            <FontAwesomeIcon icon={faCheck} />
+          </span>
+          <span className={validName || !user ? "hide" : "invalid"}>
+            <FontAwesomeIcon icon={faTimes} />
+          </span>
+        </label>
+        <input
+          aria-describedby="uidnote"
+          aria-invalid={validName ? "false" : "true"}
+          autoComplete="off"
+          id="username"
+          onBlur={() => setUserFocus(false)}
+          onChange={(e) => setUser(e.target.value)}
+          onFocus={() => setUserFocus(true)}
+          ref={userRef}
+          required
+          type="text"
+        />
+        <p
+          id="uidnote"
+          className={
+            userFocus && user && !validName ? "instructions" : "offscreen"
+          }
+        >
+          <FontAwesomeIcon icon={faInfoCircle} />
+          4 to 24 characters.
+          <br />
+          Must begin with a letter.
+          <br />
+          Letters, numbers, underscores, and hyphens allowed.
+        </p>
       </form>
     </section>
   );
