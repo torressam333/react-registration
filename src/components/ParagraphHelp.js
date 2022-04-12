@@ -5,12 +5,13 @@ const ParagraphHelp = ({
   focusedField,
   fieldEntity,
   validProperty,
-  children
+  children,
+  fieldID
 }) => {
   return (
     <>
       <p
-        id="uidnote"
+        id={fieldID}
         className={
           focusedField && fieldEntity && !validProperty
             ? "instructions"

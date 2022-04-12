@@ -79,6 +79,7 @@ const Register = () => {
           focusedField={userFocus}
           inputType="text"
           autoComp="on"
+          inputID="username"
         >
           Username:
         </InputWithLabel>
@@ -86,6 +87,7 @@ const Register = () => {
           validProperty={validName}
           fieldEntity={user}
           focusedField={userFocus}
+          fieldID="uidnote"
         >
           <FontAwesomeIcon icon={faInfoCircle} />
           4 to 24 characters.
@@ -104,6 +106,7 @@ const Register = () => {
           focusedField={pwdFocus}
           inputType="password"
           autoComp="new-password"
+          inputID="password"
         >
           Password:
         </InputWithLabel>
@@ -111,13 +114,20 @@ const Register = () => {
           validProperty={validPwd}
           fieldEntity={pwd}
           focusedField={pwdFocus}
+          fieldID="pwdnote"
         >
           <FontAwesomeIcon icon={faInfoCircle} />
-          1d to 24 characters.
+          8 to 24 characters.
           <br />
-          Must begin with a letter.
+          Must include uppercase and lowercase letters, a number and a special
+          character.
           <br />
-          Letters, numbers, underscores, and hyphens allowed.
+          Allowed special characters:
+          <span aria-label="exclamation mark">!</span>
+          <span aria-label="at symbol">@</span>
+          <span aria-label="hashtag">#</span>
+          <span aria-label="dollar sign">$</span>
+          <span aria-label="percent">%</span>
         </ParagraphHelp>
       </form>
     </section>

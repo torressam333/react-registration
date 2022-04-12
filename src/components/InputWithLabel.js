@@ -11,7 +11,8 @@ const InputWithLabel = ({
   children,
   htmlFor,
   inputType,
-  autoComp
+  autoComp,
+  inputID
 }) => {
   return (
     <>
@@ -28,7 +29,7 @@ const InputWithLabel = ({
         aria-describedby="uidnote"
         aria-invalid={validProperty ? "false" : "true"}
         autoComplete={autoComp}
-        id="username"
+        id={inputID}
         onBlur={() => setFocus(false)}
         onChange={(e) => setField(e.target.value)}
         onFocus={() => setFocus(true)}
