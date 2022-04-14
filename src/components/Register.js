@@ -54,6 +54,23 @@ const Register = () => {
     setErrMsg("");
   }, [user, pwd, matchPwd]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    //Revalidate form input again on submit
+    const v1 = authRegex.userRegex.test(user);
+    const v2 = authRegex.pwRegex.test(pwd);
+
+    if (!v1 || !v2) {
+      setErrMsg("Invalid Form Info");
+
+      return;
+    }
+
+    console.log("Form Submitted Successfully");
+    setSuccess(true);
+  };
+
   return (
     <section>
       <p
@@ -64,7 +81,7 @@ const Register = () => {
         {errMsg}
       </p>
       <h1>Sign Up</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <InputWithLabel
           htmlFor="username"
           validProperty={validName}
