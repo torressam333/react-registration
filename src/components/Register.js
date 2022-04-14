@@ -148,6 +148,13 @@ const Register = () => {
           <FontAwesomeIcon icon={faInfoCircle} />
           Both password fields must match.
         </ParagraphHelp>
+
+        <button
+          type="submit"
+          disabled={!validName || !validPwd || !validMatch ? true : false}
+        >
+          Sign Up
+        </button>
       </form>
     </section>
   );
