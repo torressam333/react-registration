@@ -1,3 +1,3 @@
 ## PURPOSE
 
-Working on creating a react registration form with JWT authentication.
+Built a react registration form (F/E) only
